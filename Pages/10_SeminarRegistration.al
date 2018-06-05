@@ -138,7 +138,7 @@ page 123456710 "Seminar Registration"
                     Image = Comment;
                     RunObject = Page 123456706;
                     RunPageLink = "No." = Field ("No.");
-                    RunPageView = where ("Table Name" = const ("Seminar Registration Header"));
+                    RunPageView = where ("Table Name" = const ("Seminar Registration"));
                 }
                 action("&Charges")
                 {
@@ -161,6 +161,20 @@ page 123456710 "Seminar Registration"
                 ShortcutKey = F9;
                 RunObject = codeunit "Seminar-Post (Yes/No)";
             }
+            action("&Print")
+            {
+                Caption = '&Print';
+                Image = Print;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                trigger OnAction();
+                var
+                    SeminarReportSelection : Record "Seminar Report Selections";
+                begin
+                    SeminarReportSelection.PrintReportSelection(SeminarReportSelection.Usage::Registration,Rec);
+                end;
+            }            
         }
     }
 }
