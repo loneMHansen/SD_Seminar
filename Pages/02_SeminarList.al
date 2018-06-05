@@ -63,6 +63,25 @@ page 123456702 "Seminar List"
                     PromotedOnly = true;
                 }
             }
+        // >> Lab 8-2 
+        action("Ledger Entries") 
+        { 
+            RunObject=page "Seminar Ledger Entries"; 
+            RunPageLink="Seminar No."=field("No."); 
+            Promoted=true; PromotedCategory=Process; 
+            ShortcutKey="Ctrl+F7"; 
+            Image=WarrantyLedger; 
+        } 
+        action("&Registrations") 
+        { 
+            RunObject=page "Seminar Registration List"; 
+            RunPageLink="Seminar No."=field("No."); 
+            Image=Timesheet; 
+            Promoted=true; 
+            PromotedCategory=Process; 
+        } 
+        // << Lab 8-2
+            
         }
     }
 }

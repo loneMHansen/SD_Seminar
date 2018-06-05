@@ -4,7 +4,8 @@ table 123456710 "Seminar Registration Header"
     //   Chapter 6 - Lab 1-3 & Lab 1-4
     //     - Created new table
     Caption = 'Seminar Registration Header';
-
+    LookupPageId="Posted Seminar Reg. List"; 
+    DrillDownPageId="Posted Seminar Reg. List";
 
     Fields
     {
@@ -350,8 +351,14 @@ table 123456710 "Seminar Registration Header"
             SeminarSetup.Get;
             SeminarSetup.TestField("Seminar Registration Nos.");
             NoSeriesMgt.InitSeries(SeminarSetup."Seminar Registration Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+
         end;
         initrecord;
+        // >> Lab 8 1-1 
+        if GetFilter("Seminar No.") <>'' then 
+            if GetRangeMin("Seminar No.") = GetRangeMax("Seminar No.") then 
+                Validate("Seminar No.",GetRangeMin("Seminar No.")); 
+        // << Lab 8 1-1
     end;
 
     local procedure InitRecord();
